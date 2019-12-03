@@ -1,21 +1,20 @@
-import csv
-
-with open('/Users/daikiyamada/Desktop/ex.csv', 'w') as csv_file:
-    fildnames = ['Name','Count']
-    writer = csv.DictWriter(csv_file, fieldnames=fildnames)
-    writer.writeheader()
-    writer.writerow({'Name': '名前','Count': '年齢'})
+# tarfileの圧縮展開
 
 
-answer = input('まだ入力しますか? (y/n):')
-while answer == y:
-    name = input('名前はなんですか? :')
-    age = input('年齢はいくつですか? :')
-    with open('/Users/daikiyamada/Desktop/ex.csv', 'a') as csv_file:
-    fildnames = ['Name','Count']
-    writer = csv.DictWriter(csv_file, fieldnames=fildnames)
-    writer.writeheader()
-    writer.writerow({'Name': name,'Count': 1})
+# lesson_030フォルダを .tar.gzに圧縮する
+
+import tarfile
+
+# with tarfile.open('test.tar.gz', 'w:gz') as tr: 
+    # tr.add('/Users/daikiyamada/Documents/Projects/python_udemy/python_basic/lesson_030')
 
 
+# # tarfileをPythonの中で展開する
+# with tarfile.open('test.tar.gz', 'r:gz') as tr:
+#     tr.extractall(path='test_tar')
 
+
+# 解凍せずに中身をみる
+with tarfile.open('test.tar.gz', 'r:gz') as tr:
+    with tr.extractfile('python_basic/test_tar/Users/daikiyamada/Documents/Projects/python_udemy/python_basic/lesson_030/test.txt') as f:
+        print(f.read())
